@@ -1,0 +1,73 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css");
+body{
+    text-align: center;
+    background-color: #3a79b0;
+    margin: 0;
+    padding: 0;
+    font-family: 'HK Grotesk', sans-serif;
+
+}
+#login{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    background-color: white;
+    border-style: outset;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    background-color: #414042 ;
+
+}
+
+.left {float:left;}
+.right {float:right;}
+
+#footer{
+    margin: 1%;
+    color: whitesmoke;
+}
+
+form{
+    text-align: center;
+}
+
+input[type=text], input[type=password]{
+    text-align: center;
+    padding: 12px 20px;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    font-size: 18px;
+
+}
+
+button{
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 10px;
+    background-color: #3a79b0;
+    color: white;
+}
+
+#loginbtn{
+    margin-bottom: 3%;
+background-color: #F0BA40;
+    font-size: 18px;
+}
+#registerbtn{
+    background-color: #182D88;
+    font-size: 15px;
+
+}

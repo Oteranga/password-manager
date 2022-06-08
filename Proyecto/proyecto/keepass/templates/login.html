@@ -1,0 +1,32 @@
+<html>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'keepass/css/login.css' %}">
+    <div id="login">
+        <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo">
+
+        <form action="." method="post">
+            <div class="container">
+              <input type="text" placeholder="Username" name="uname" required>
+              <input type="password" placeholder="Password" name="psw" required>
+              <button type="submit" id="loginbtn">Sign in</button>
+                  
+            </div>
+          
+            <div class="container">
+                <p>Need an account?</p>
+              <button type="button" id="registerbtn">Sign up</button>
+            </div>
+          </form>
+
+
+    </div>
+
+    <footer>
+        <div id="footer">
+            <span class="left">Universidad de Ingenieria y Tecnologia</span>
+            <span class="right">© 2022 Fabrizio Garcia, Angelica Sanchez, Alejandro Otero</span>
+        </div>
+
+    </footer>
+</html>
