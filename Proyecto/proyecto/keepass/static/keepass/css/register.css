@@ -1,0 +1,151 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css");
+
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: 'HK Grotesk', sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #3a79b0;
+  padding: 0.5%;
+
+}
+
+.header img {
+    float: left;
+    width: 40px;
+    height: 50px;
+    display: inline;
+  }
+  
+.header h2 {
+    position: relative;
+    left: 10px;
+    display: inline;
+    color: whitesmoke;
+  font-weight: 800;
+
+}
+
+.vertical-center {
+    margin-top: 0.5%;
+    position: relative;
+    top: 50%;
+}
+
+aside {
+  width: 40%;
+  padding-left: 15px;
+  margin-left: 15px;
+  margin-top: 1%;
+  float: right;
+  font-style: italic;
+}
+
+
+h1{
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/*
+
+.glyphicon {
+  font-size: 25px;
+}
+
+.header-right {
+  float: right;
+}
+*/
+
+
+
+#container {
+  height:100%;
+  width:100%;
+}
+
+#right-column {
+  float: left;
+  width: 40%;
+  display: block;
+  height:inherit;
+}
+  
+#left-column {
+  float: left;
+  border: 1px;
+  width: 60%;
+  height:inherit;
+}
+
+#logo-register{
+  margin-top: 25%;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5.5rem;
+  background-color: #414042 ;
+
+}
+
+.left {float:left;}
+.right {float:right;}
+
+#footer{
+  margin: 1%;
+  color: whitesmoke;
+}
+
+#register-form
+{
+  margin: 10%;
+}
+
+#register-title{
+  color: #3a79b0;
+
+  font-weight: 800;
+
+}
+
+#input{
+  display: block;
+  padding: 12px 20px;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+
+  font-size: 18px;
+  width: 100%;
+}
+#form{
+  margin-right: 10%;
+  margin-left: 20%;
+}
+
+#registerbtn{
+  float: right;
+  border: 1px solid #ccc;
+  padding: 12px 20px;
+  padding-left: 8%;
+  padding-right: 8%;
+  border-radius: 10px;
+  background-color: #3a79b0;
+  color: white;
+  margin-bottom: 3%;
+  background-color: #F0BA40;
+  font-weight: 800;
+  font-size: 18px;
+}

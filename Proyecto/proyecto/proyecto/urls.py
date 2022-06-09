@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from keepass.views import login_page
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from keepass.views import login_page, register_page, main_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',login_page,name = 'login')
+    path('',login_page,name = 'login'),
+    path('register',register_page, name='register'),
+    path('main',main_page, name='main')
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
