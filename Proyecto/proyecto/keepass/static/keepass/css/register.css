@@ -149,3 +149,21 @@ footer {
   font-weight: 800;
   font-size: 18px;
 }
+
+h3{
+  text-align: center;
+  background-color: #d22d2d;
+  border-radius: 7px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-weight: 800;
+
+
+
+}
+
+#message{
+  color: white;
+  margin-left: 30%;
+  margin-right: 30%;
+}
