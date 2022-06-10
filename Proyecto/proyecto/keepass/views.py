@@ -1,12 +1,29 @@
+from http.client import UNAUTHORIZED
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 from keepass.forms import RegisterForm
-from keepass.keepass import check_password, check_fields_not_empty,save_register
+from keepass.keepass import check_password, check_fields_not_empty,save_register, authenticate_account
 # Create your views here.
 
 def login_page(request):
+    if request.method == "GET":
+      context = {}
+      return render(request, 'login.html',context)
+    if request.method == "POST":
+      uname = request.POST['uname']
+      psw = request.POST['psw']
+      if check_fields_not_empty([uname,psw])==False:
+        messages.success(request, "Empty fields")
+      if authenticate_account(uname,psw):
+        return HttpResponseRedirect('/main')
+      else:
+        messages.success(request, "INVALID ACCOUNT")
+        return HttpResponseRedirect(request.path)
+
+
+
     return render(request,'login.html')
 
 def register_page(request):

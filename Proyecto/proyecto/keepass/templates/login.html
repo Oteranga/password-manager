@@ -6,11 +6,20 @@
     <div id="login">
         <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo">
         <form action="." method="post">
+          {% csrf_token %}
+
             <div class="container">
               <input type="text" placeholder="Username" name="uname" required>
               <input type="password" placeholder="Password" name="psw" required>
               <button type="submit" id="loginbtn">Sign in</button>
-            </div>        
+            </div>
+            {% if messages %}
+            <div id="message">
+              {% for message in messages %}
+              <h3{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+              {% endfor %}
+            </div>
+            {% endif %}        
             <div class="container">
                 <p>Need an account?</p>
               <button type="button" id="registerbtn">Sign up</button>

@@ -72,3 +72,18 @@ background-color: #F0BA40;
     font-size: 15px;
 
 }
+
+h3{
+    text-align: center;
+    border-radius: 7px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 800;
+  
+  
+  
+}
+  
+  #message{
+    color: red;
+}

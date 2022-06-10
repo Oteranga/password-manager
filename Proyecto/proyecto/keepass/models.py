@@ -13,7 +13,7 @@ class User(models.Model):
     email= models.TextField(max_length=100)
     user_password = models.TextField(max_length=100, null=False, default=str(username)) # password for authentication
     masterpassword = models.TextField(max_length=300) # password for encryption
-
+    salt = models.TextField(max_length=100,null=True)
     def __str__(self):
         return self.username
 
