@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 from keepass.forms import RegisterForm
-from keepass.keepass import check_password, check_fields_not_empty,save_register, authenticate_account
+from keepass.keepass import check_password, check_fields_not_empty,save_register, authenticate_account, add_password, get_user_id, get_password,get_user_passwords, check_master_password
 # Create your views here.
 
 def login_page(request):
@@ -59,4 +59,56 @@ def register_page(request):
     return render(request, 'register.html',context) 
 
 def main_page(request):
-    return render(request,'index.html')
+    if request.method == "GET":
+      context = {}
+      id = get_user_id()
+      psws = get_user_passwords(id)
+      context['psws'] = psws
+      return render(request,'index.html',context)
+    if request.method == "POST":
+      context = {}
+      id = get_user_id()
+      psws = get_user_passwords(id)
+      context['psws'] = psws
+      mpsw = request.POST['mpsw']
+      mpsw_id = request.POST['mpsw_id']
+      encripted_psw = get_password(mpsw_id)
+      print(mpsw_id)
+      r, obj =check_master_password(mpsw)
+      if r==True:
+        print("SE LOGRO")
+        context['password']=[encripted_psw]
+        context['password_id']=[mpsw_id]
+
+
+        return render(request,'index.html',context)
+      print("NO LOGRO")
+
+      return render(request,'index.html',context)
+      
+
+def add_page(request):
+    # render(request,'add_password.html')
+    if request.method == "GET":
+      context = {}
+      return render(request, 'add_password.html',context)
+    if request.method == "POST":
+      #Get the posted form
+      uname = request.POST['uname']
+      email = request.POST['email']
+      psw = request.POST['psw']
+      site = request.POST['site']
+      if check_fields_not_empty([uname,email,psw,site])==False:
+        messages.success(request, "Empty fields")
+      else:
+        add_password(email,uname,psw,site)
+        return HttpResponseRedirect('/main')
+      return HttpResponseRedirect(request.path)
+
+def edit_page(request):
+    if request.method == "GET":
+      v = request.GET['psw_id']
+      print(v)
+      print("GET")
+    return render(request,'edit.html')
+

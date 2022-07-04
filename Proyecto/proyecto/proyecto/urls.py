@@ -18,14 +18,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from keepass.views import login_page, register_page, main_page
+from keepass.views import login_page, register_page, main_page, add_page,edit_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login_page,name = 'login'),
     path('register',register_page, name='register'),
-    path('main',main_page, name='main')
-
+    path('main',main_page, name='main'),
+    path('editar',edit_page, name='edit'),
+    path('add',add_page, name='add')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

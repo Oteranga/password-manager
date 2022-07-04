@@ -9,9 +9,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
 </head>
 <body>
-  <!--
+  
 
 <div class="header">
   <div>
@@ -27,37 +29,92 @@
       </a>
     </div>
   </div>
-  <div id="form">
-    <div id="blank"> </div>
-    <div>
-      <form action="." method="post">
-        <div id="input-site">
-          <input type="text" placeholder="Site name" name="sname" required>
-        </div>
-      </form>
-  </div>
-  </div>
+
+
 
 </div>
 
+
+<!--
+NICE TO HAVE
 <div id="search_bar">
-
-
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-  <img src="{% static 'keepass/imgs/logo.png' %}" alt="logo" />
-
+  <div class="container">
+    <input type="text" placeholder="Web Site" name="wname" required>
+  </div>
 </div>
 -->
-<h1>LOGEAAADO</h1>
+
+<div id="container">
+  <h1> YOUR ACCOUNTS </h1>
+
+  <table id="tableId" style="width:75%">
+    <tr>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Web Site</th>
+    </tr>
+      {% for psw in psws %}
+      <tr class="inside" id='{{psw.id}}'>
+        <td> {{psw.email}} </td>
+        <td> {{psw.username}} </td>
+        <td> {{psw.destination_url}} </td>
+      </tr>
+      {% endfor %}
+  </table>
+
+  <div id="btn-part">
+    <button type="button" id="registerbtn" onclick="location.href = '/add'">Add new account</button>
+  </div>
+
+
+
+  <div class="overlay h" id="overlay">
+    <div class="popup" id="popup">
+      <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+      <h3>INSERT MASTER PASSWORD</h3>
+      <form method="post">
+        {% csrf_token %}
+        <div class="contenedor-inputs">
+          <input type="text" name="mpsw" placeholder="Master Password" required>
+          <input type="hidden" id="mpsw_id" name="mpsw_id" value="">
+          
+        </div>
+        <input type="submit" class="btn-submit" value="SUBMIT">
+      </form>
+    </div>
+  </div>
+
+
+  {% for c in password %}
+
+  <div class="overlay" id="overlay2">
+    <div class="popup" id="popup2">
+      <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+      <h3>YOUR PASSWORD IS</h3>
+      <h1>{{c}}</h1>
+      {% for a in password_id %}
+      <button type="button" id="editbtn" onclick="location.href = '/editar?psw_id={{a}}'">Edit account</button>
+    
+      {% endfor %}
+
+
+
+
+      
+    </div>
+  </div>
+
+  {% endfor %}
+
+  <script src="{% static 'keepass/js/index.js' %}"></script>
+
+</div>
+
+
+
+
+
+
 
   
 <footer>

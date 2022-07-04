@@ -86,9 +86,131 @@ footer {
 }
 #input-site{
   margin-top: 2.5%;
+  background-color: white;
 }
 
 input[type=text]{
+  text-align: center;
+  padding: 12px 20px;
+  width: 50%;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 18px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+
+
+}
+
+#bar{
+  background-color: white;
+}
+
+#container, h1{
+  text-align:  center;
+}
+
+#container h1{
+  font-weight: 900;
+}
+table{
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2.5%;
+  font-size: 30px;
+}
+
+
+button{
+  border: 1px solid #ccc;
+  padding: 12px 20px;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 10px;
+  background-color: #3a79b0;
+  color: white;
+}
+
+#registerbtn{
+background-color: #F0BA40;
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+#btn-part{
+  text-align: right;
+  margin-right: 15%;
+  margin-left: 30%;
+  margin-top: 2.5% ;
+  margin-bottom: 2.5%;
+}
+
+td{
+  text-align: left;
+}
+
+
+
+
+
+ .inside:hover {background-color: #F0BA40;}
+
+
+.overlay{
+  
+  position: fixed;
+  top: 0;
+  bottom:  0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.h{
+  visibility: hidden;
+}
+.popup{
+  background-color: #3a79b0;
+  border-radius: 10px;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
+
+.overlay h3{
+  font-weight: 900;
+}
+
+
+.popup .btn-cerrar-popup {
+	font-size: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #F0BA40;
+}
+
+.popup .btn-cerrar-popup:hover {
+	color: red;
+}
+
+.overlay.active{
+  visibility: visible;
+}
+input[type=submit]{
   text-align: center;
   padding: 12px 20px;
   display: block;
@@ -97,8 +219,26 @@ input[type=text]{
   border-radius: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
   font-size: 18px;
+  background-color: black;
 
 }
 
+input[type=text]{
+  width: 95%;
+  color: black;
+}
 
+.overlay h1{
+  color: #414042;
+}
+
+#editbtn{
+  background-color: #F0BA40;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    margin-top: 5%;
+  }

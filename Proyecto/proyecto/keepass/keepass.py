@@ -1,8 +1,12 @@
 
-from .models import User
+from .models import Password, User
 import re
 from hashlib import pbkdf2_hmac 
 import secrets 
+
+
+user_id = 15
+
 
 def check_fields_not_empty(fields):
     for i in fields:
@@ -43,10 +47,47 @@ def authenticate_account(uname,psw):
     obj = User.objects.filter(username=uname)
     if not obj:
         return False
-    account = obj[0 ]
+    account = obj[0]
     salt = bytes.fromhex(account.salt)
     if account.user_password == hash_password(psw,salt):
+        global user_id
+        user_id= account.id
         return True
     else:
         return False
-#-> Fabo#71563516
+
+def add_password(e_mail,uname,psw,site):
+    global user_id
+    print(user_id)
+
+    new_psw = Password(
+        user = User.objects.filter(id=user_id)[0],
+        username= uname,
+        email= e_mail,
+        password = psw,
+        destination_url = site
+    )
+    new_psw.save()
+
+def get_user_passwords(id):
+    user_passwords = Password.objects.filter(user_id=id)
+    return user_passwords
+
+def get_password(id):
+    user_passwords = Password.objects.filter(id=id)
+    return user_passwords[0]
+#-> Fabrizio$301200
+
+def get_user_id():
+    global user_id
+    return user_id 
+    
+def check_master_password(mpsw):
+    global user_id
+    obj = User.objects.filter(id=user_id)
+    account = obj[0]
+    salt = bytes.fromhex(account.salt)
+    if account.masterpassword == hash_password(mpsw,salt):
+        return True, account.masterpassword
+    else:
+        return False, ""
