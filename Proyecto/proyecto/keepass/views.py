@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 from keepass.forms import RegisterForm
-from keepass.keepass import check_password, check_fields_not_empty,save_register, authenticate_account, add_password, get_user_id, get_password,get_user_passwords, check_master_password
+from keepass.keepass import check_password, delete_password,decript,check_fields_not_empty, decript, delete_password,save_register, authenticate_account, add_password, get_user_id, get_password,get_user_passwords, check_master_password
 # Create your views here.
 
 def login_page(request):
@@ -72,18 +72,21 @@ def main_page(request):
       context['psws'] = psws
       mpsw = request.POST['mpsw']
       mpsw_id = request.POST['mpsw_id']
-      encripted_psw = get_password(mpsw_id)
-      print(mpsw_id)
-      r, obj =check_master_password(mpsw)
+      encripted_psw = get_password(mpsw_id).password
+      print(mpsw)
+      r, obj = check_master_password(mpsw)
       if r==True:
         print("SE LOGRO")
-        context['password']=[encripted_psw]
+        context['password']=[decript(encripted_psw,obj)]
         context['password_id']=[mpsw_id]
 
 
         return render(request,'index.html',context)
       print("NO LOGRO")
-
+      context = {}
+      id = get_user_id()
+      psws = get_user_passwords(id)
+      context['psws'] = psws
       return render(request,'index.html',context)
       
 
@@ -109,6 +112,6 @@ def edit_page(request):
     if request.method == "GET":
       v = request.GET['psw_id']
       print(v)
-      print("GET")
-    return render(request,'edit.html')
+      delete_password(v)
+      return HttpResponseRedirect('/main')
 

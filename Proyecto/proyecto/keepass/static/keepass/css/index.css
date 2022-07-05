@@ -236,7 +236,7 @@ input[type=text]{
 }
 
 #editbtn{
-  background-color: #F0BA40;
+  background-color: red;
     color: white;
     font-size: 15px;
     font-weight: 900;
